@@ -9,25 +9,21 @@ import re
 import random
 
 nlp = StanfordCoreNLP('http://localhost:9000')
-data_path = './'
+data_path = u'./'
 num_p = re.compile('<[0-9]*>')
 
-lemmaSet = ()
+lemmaSet = set()
 
 def lparse(input):
     output = nlp.annotate(input, properties={
-        'annotators':'tokenize,ssplit,pos.lemma',
-        'outputFormat':'xml',
-        'timeout':30000
-        })
+        'annotators': 'tokenize,ssplit,pos,lemma',
+        'outputFormat': 'xml',
+        'timeout': 30000})
     fixed = []
     for o in output:
-        if is_ascii(o):
+        if all(ord(c) < 128 for c in o):
             fixed.append(o)
     return("".join(fixed))
-
-def convert_term_to_num(input):
-
 
 def process(input):
     num = ''
@@ -38,14 +34,14 @@ def process(input):
     for line in codecs.open(input, 'r', 'utf-8'):
         lemma_sent = []
 
-        if num_p.match(line) and '¥t' not in line:
+        if num_p.match(line) and u'¥t' not in line:
             num = int(line.replace('<','').replace('>','').strip())
             count = 1
             if not lemma_sent and not num:
                 data[num] = lemma_sent
 
         if count == 0:
-            sent = " ".join(line.split('¥t'))
+            sent = str(" ".join(line.split(u'¥t')))
             lparseXML = etree.fromstring(lparse(sent))
 
             tokens = lparseXML.findall('.//token')
@@ -77,7 +73,7 @@ if __name__ == '__main__':
         lemmaDic[term] = lem_num
         revlemmaDic[lem_num] = term
 
-    print '# of all voca : ' + str(len(lemmaDic.keys))
+    print '# of all voca : ' + str(len(lemmaDic.keys()))
 
     pickle.dump(lemmaDic, open('voca', 'w'))
     pickle.dump(revlemmaDic, open('revVoca', 'w'))
@@ -87,7 +83,7 @@ if __name__ == '__main__':
     ans_dic = {}
 
     for ans_datas in [train_a, test_a, dev_a]:
-        for ans_id in ans_datas.keys:
+        for ans_id in ans_datas.keys():
             ans_count += 1
             sent = ans_datas[ans_id]
             new_sent = []
@@ -108,7 +104,7 @@ if __name__ == '__main__':
 
     train_list = []
 
-    for train_id in train_q.keys:
+    for train_id in train_q.keys():
         temp['question_id'] = train_id
         temp['good'] = ans_dic[train_id][0]
 
@@ -126,7 +122,7 @@ if __name__ == '__main__':
 
     test_list = []
 
-    for test_id in test_q.keys:
+    for test_id in test_q.keys():
         temp['question_id'] = test_id
         temp['good'] = ans_dic[test_id][1]
 
@@ -144,7 +140,7 @@ if __name__ == '__main__':
 
     dev_list = []
 
-    for dev_id in dev_q.keys:
+    for dev_id in dev_q.keys():
         temp['question_id'] = dev_id
         temp['good'] = ans_dic[dev_id][2]
 
@@ -157,7 +153,7 @@ if __name__ == '__main__':
 
         dev_list.append(temp)
 
-    print '# of dev questions : ' + str(len(trin_list))
+    print '# of dev questions : ' + str(len(dev_list))
     pickle.dump(dev_list, open('devs', 'w'))
 
 
