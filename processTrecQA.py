@@ -30,15 +30,18 @@ def process(input):
     count = 0
 
     data = {}
+    lemma_sent = []
 
     for line in codecs.open(input, 'r', 'utf-8'):
-        lemma_sent = []
-
+        
         if num_p.match(line) and u'¥t' not in line:
             num = int(line.replace('<','').replace('>','').strip())
             count = 1
-            if not lemma_sent and not num:
+            #print " ".join(lemma_sent)
+            #print num
+            if lemma_sent and num:
                 data[num] = lemma_sent
+            lemma_sent = []
 
         if count == 0:
             sent = str(" ".join(line.split(u'¥t')))
@@ -52,6 +55,8 @@ def process(input):
                 lemmaSet.add(lemma)
         
         count -= 1
+
+    #print data
 
     return data
 
@@ -80,41 +85,66 @@ if __name__ == '__main__':
 
     ans_count = 0
     ans_list = []
-    ans_dic = {}
+    train_ans_dic = {}
+    test_ans_dic = {}
+    dev_ans_dic = {}
 
-    for ans_datas in [train_a, test_a, dev_a]:
-        for ans_id in ans_datas.keys():
-            ans_count += 1
-            sent = ans_datas[ans_id]
-            new_sent = []
-            for term in sent:
-                new_sent.append(lemmaDic[term])
-            temp_dic['id'] = ans_count
-            temp_dic['text'] = new_sent
-            if ans_id not in ans_dic:
-                temp_list = [ans_count]
-                ans_dic[ans_id] = temp_list
-            else:
-                ans_dic[ans_id].append(ans_count)
-            ans_list.append(temp_dic)
+    for ans_id in train_a.keys():
+        ans_count += 1
+        sent = train_a[ans_id]
+        new_sent = []
+        temp_dic = {}
+        for term in sent:
+            new_sent.append(lemmaDic[term])
+        temp_dic['id'] = ans_count
+        temp_dic['text'] = new_sent
+        train_ans_dic[ans_id] = ans_count
+
+        ans_list.append(temp_dic)
+
+    for ans_id in test_a.keys():
+        ans_count += 1
+        sent = test_a[ans_id]
+        new_sent = []
+        temp_dic = {}
+        for term in sent:
+            new_sent.append(lemmaDic[term])
+        temp_dic['id'] = ans_count
+        temp_dic['text'] = new_sent
+        test_ans_dic[ans_id] = ans_count
+
+        ans_list.append(temp_dic)
+
+    for ans_id in dev_a.keys():
+        ans_count += 1
+        sent = dev_a[ans_id]
+        new_sent = []
+        temp_dic = {}
+        for term in sent:
+            new_sent.append(lemmaDic[term])
+        temp_dic['id'] = ans_count
+        temp_dic['text'] = new_sent
+        dev_ans_dic[ans_id] = ans_count
+
+        ans_list.append(temp_dic)
 
     print '# of all answers : ' + str(len(ans_list))
 
     pickle.dump(ans_list, open('answers', 'w'))
 
-    train_list = []
+    train_list = []      
 
     for train_id in train_q.keys():
+        temp = {}
         temp['question_id'] = train_id
-        temp['good'] = ans_dic[train_id][0]
-
+        temp['good'] = train_ans_dic[train_id]
         new_sent = []
         for term in train_q[train_id]:
             new_sent.append(lemmaDic[term])
         temp['question'] = new_sent
-
-        temp['bad'] = random.sample(range(1, len(ans_list)).remove(temp['good']), 20)
-
+        sample = train_ans_dic.keys()
+        sample.remove(train_id)
+        temp['bad'] = random.sample(sample, 20)
         train_list.append(temp)
 
     print '# of train questions : ' + str(len(train_list))
@@ -123,15 +153,17 @@ if __name__ == '__main__':
     test_list = []
 
     for test_id in test_q.keys():
+        temp = {}
         temp['question_id'] = test_id
-        temp['good'] = ans_dic[test_id][1]
-
+        temp['good'] = test_ans_dic[test_id]
         new_sent = []
         for term in test_q[test_id]:
             new_sent.append(lemmaDic[term])
         temp['question'] = new_sent
 
-        temp['bad'] = random.sample(range(1, len(ans_list)).remove(temp['good']), 20)
+        sample = test_ans_dic.keys()
+        sample.remove(test_id)
+        temp['bad'] = random.sample(sample, 20)
 
         test_list.append(temp)
 
@@ -141,15 +173,18 @@ if __name__ == '__main__':
     dev_list = []
 
     for dev_id in dev_q.keys():
+        temp = {}
         temp['question_id'] = dev_id
-        temp['good'] = ans_dic[dev_id][2]
+        temp['good'] = dev_ans_dic[dev_id]
 
         new_sent = []
         for term in dev_q[dev_id]:
             new_sent.append(lemmaDic[term])
         temp['question'] = new_sent
 
-        temp['bad'] = random.sample(range(1, len(ans_list)).remove(temp['good']), 20)
+        sample = dev_ans_dic.keys()
+        sample.remove(dev_id)
+        temp['bad'] = random.sample(sample, 20)
 
         dev_list.append(temp)
 
