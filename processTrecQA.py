@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-import codec
 import pickle
-from xml.etree.ElementTree import *
+import xml.etree.ElementTree as et
 import sys
+from pycorenlp import StanfordCoreNLP
 
 nlp = StanfordCoreNLP('http://localhost:9000')
 dataPath = u'./'
@@ -31,8 +31,10 @@ def lparse(input):
 def nlp_process(file_path):
 
     result = []
-
-    tree = parse(file_path).getroot()
+    
+    xml = et.parse(file_path)
+    tree = xml.getroot()
+    
     for QApair in tree.findall('.//QApairs'):
 
         temp = {}
@@ -49,10 +51,10 @@ def nlp_process(file_path):
                 sent = []
 
                 raw_sent = document.text.split(u'¥n')[0].replace(u'¥t',' ')
-                parse_result = fromstring(lparse(raw_sent))
+                parse_result = et.fromstring(lparse(raw_sent))
 
                 tokens = parse_result.findall('.//token')
-                   for token in tokens:
+                for token in tokens:
                     lemma = token.find(".//lemma").text
                     sent.append(lemma)
                     lemmaSet.add(lemma)
