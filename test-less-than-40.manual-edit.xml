@@ -1375,7 +1375,7 @@ SUB	ROOT	VMOD	VMOD	NMOD	NMOD	NMOD	P	NMOD	NMOD	PMOD	P	VMOD	AMOD	NMOD	NMOD	PMOD	NM
 -	-	-	-	-	ORGANIZATION-B	ORGANIZATION-I	ORGANIZATION-I	-	ORGANIZATION-B	ORGANIZATION-I	-	ORGANIZATION-B	-	-	-	-	-	-	-	-	-	-	-	PER_DESC-B	-	-	ORG_DESC-B	-	DATE-B	-	-	-	PER_DESC-B	-	-	-	-	-
 </negative>
 <negative>
-``	Even	if	they	do	n't	specify	Internet	savvy	by	name	,	they	are	asking	for	it	,	''	said	Gerard	R	.	Roche	,	chairman	of	Heidrick	&	Struggles	,	a	search	firm	.
+``	Even	if	they	do	n't	specify	Internet	savvy	by	name	,	they	are	asking	for	it	,	''	said	Gerard	R	.	Roche	,	chairman	of	Heidrick	amp;	Struggles	,	a	search	firm	.
 ``	RB	IN	PRP	VBP	RB	VB	JJ	NN	IN	NN	,	PRP	VBP	VBG	IN	PRP	,	''	VBD	NNP	NNP	.	NNP	,	NN	IN	NNP	CC	NNP	,	DT	NN	NN	.
 P	DEP	VMOD	SUB	SBAR	VMOD	VC	NMOD	OBJ	VMOD	PMOD	P	SUB	VMOD	VC	VMOD	PMOD	P	P	ROOT	NMOD	NMOD	P	NMOD	P	SUB	NMOD	NMOD	NMOD	NMOD	P	NMOD	NMOD	PMOD	P
 20	3	14	5	3	5	5	9	7	7	10	14	14	20	14	15	16	20	20	0	24	24	24	26	26	20	26	30	30	34	34	34	34	27	20
@@ -9293,7 +9293,7 @@ NMOD	NMOD	NMOD	SUB	NMOD	PMOD	NMOD	P	ROOT	VMOD	VMOD	PMOD	P	VMOD	NMOD	PMOD	NMOD	NM
 -	-	ORG_DESC-B	ORG_DESC-I	-	-	-	-	-	-	-	-	-	-	-	-	-	-	-	ORGANIZATION-B	-	-	-	-	-	-	-	-	ORG_DESC-B	-	-	ORGANIZATION-B	ORG_DESC-B	-
 </negative>
 <negative>
-The	company	's	two	other	joint	ventures	,	Smart	Money	-LRB-	which	is	published	in	conjunction	with	Dow	Jones	&	Co	.
+The	company	's	two	other	joint	ventures	,	Smart	Money	-LRB-	which	is	published	in	conjunction	with	Dow	Jones	amp;	Co	.
 DT	NN	POS	CD	JJ	JJ	NNS	,	NNP	NNP	-LRB-	WDT	VBZ	VBN	IN	NN	IN	NNP	NNP	CC	NNP	.
 NMOD	NMOD	NMOD	NMOD	NMOD	NMOD	NMOD	P	NMOD	ROOT	NMOD	NMOD	SBAR	VC	VMOD	PMOD	NMOD	NMOD	NMOD	NMOD	PMOD	P
 3	3	7	7	7	7	10	10	10	0	10	10	12	13	14	15	16	21	21	21	17	10
@@ -9423,7 +9423,7 @@ NMOD	NMOD	SUB	VMOD	NMOD	OBJ	NMOD	NMOD	PMOD	NMOD	AMOD	AMOD	VMOD	P	NMOD	SUB	ROOT	V
 -	ORGANIZATION-B	ORGANIZATION-I	-	-	-	-	-	-	DATE-B	DATE-I	DATE-I	DATE-I	-	FAC-B	FAC-I	-	-	-	-	-	-	-	-	-	-	-	GPE_DESC-B	-
 </negative>
 <negative>
-Reuters	recently	started	work	on	its	new	headquarters	across	from	4	Times	Square	,	and	Ernst	&	Young	,	the	accounting	firm	,	is	close	to	a	deal	to	build	its	own	tower	nearby	.
+Reuters	recently	started	work	on	its	new	headquarters	across	from	4	Times	Square	,	and	Ernst	amp;	Young	,	the	accounting	firm	,	is	close	to	a	deal	to	build	its	own	tower	nearby	.
 NNS	RB	VBD	NN	IN	PRP$	JJ	NNS	NNS	IN	DT	NNP	NNP	,	CC	NNP	CC	NNP	,	DT	VBG	NN	,	VBZ	RB	TO	DT	NN	TO	VB	PRP$	JJ	NN	NN	.
 SUB	VMOD	ROOT	OBJ	NMOD	NMOD	NMOD	NMOD	PMOD	NMOD	NMOD	NMOD	PMOD	P	VMOD	NMOD	NMOD	NMOD	P	NMOD	NMOD	SUB	P	VMOD	PRD	AMOD	NMOD	PMOD	VMOD	NMOD	NMOD	NMOD	NMOD	OBJ	P
 3	3	0	3	4	9	9	9	5	9	13	13	10	24	24	18	18	22	22	22	22	24	22	3	24	25	28	26	30	28	34	34	34	30	3
@@ -10943,7 +10943,7 @@ VMOD	ROOT	NMOD	SUB	NMOD	NMOD	NMOD	NMOD	NMOD	PMOD	P
 -	-	ORGANIZATION-B	ORGANIZATION-I	-	-	-	ORGANIZATION-B	-	-	-
 </question>
 <positive>
-He	is	the	Berkman	professor	of	law	and	member	of	the	law	school	's	Berkman	Center	for	Internet	&	Society	,	a	research	center	that	studies	the	development	and	regulation	of	the	Internet	.
+He	is	the	Berkman	professor	of	law	and	member	of	the	law	school	's	Berkman	Center	for	Internet	amp;	Society	,	a	research	center	that	studies	the	development	and	regulation	of	the	Internet	.
 PRP	VBZ	DT	NNP	NN	IN	NN	CC	NN	IN	DT	NN	NN	POS	NNP	NNP	IN	NNP	CC	NNP	,	DT	NN	NN	WDT	VBZ	DT	NN	CC	NN	IN	DT	NNP	.
 SUB	ROOT	NMOD	NMOD	PRD	NMOD	NMOD	NMOD	PMOD	NMOD	NMOD	NMOD	NMOD	NMOD	NMOD	NMOD	NMOD	NMOD	NMOD	NMOD	P	NMOD	NMOD	PMOD	NMOD	SBAR	NMOD	NMOD	NMOD	OBJ	NMOD	NMOD	PMOD	P
 2	0	5	5	2	5	9	9	6	9	14	14	14	16	16	24	16	20	20	24	24	24	24	10	24	25	30	30	30	26	30	33	31	2
