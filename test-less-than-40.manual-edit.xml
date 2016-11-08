@@ -1,3 +1,4 @@
+<root>
 <QApairs id='32.1'>
 <question>
 What	do	practitioners	of	Wicca	worship	?
@@ -12085,3 +12086,4 @@ SUB	NMOD	NMOD	NMOD	NMOD	NMOD	NMOD	VMOD	SUB	NMOD	NMOD	NMOD	NMOD	PMOD	ROOT	NMOD	OB
 PER_DESC-B	-	PERSON-B	-	-	-	-	-	-	-	ORGANIZATION-B	-	-	PER_DESC-B	-	-	-	-
 </negative>
 </QApairs>
+</root>
