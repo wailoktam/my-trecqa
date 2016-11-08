@@ -31,7 +31,7 @@ def lparse(input):
 def nlp_process(file_path):
 
     result = []
-    
+     
     xml = et.parse(file_path)
     tree = xml.getroot()
     
@@ -77,7 +77,7 @@ def convert_sent(sent):
 
 def process(nlped_data):
     num = 0
-    resunt = []
+    result = []
 
     for document in nlped_data:
         num += 1
@@ -134,7 +134,7 @@ if __name__ == '__main__':
     print '# of all voca : ' + str(len(lemmaDic.keys()))
 
     pickle.dump(lemmaDic, open('voca', 'w'))
-    pickle.dump(revlemmaDic, open('revVoca', 'w'))
+    pickle.dump(revLemmaDic, open('revVoca', 'w'))
 
     for data_type in nlped.keys():
         dump = process(nlped[data_type])
@@ -142,7 +142,7 @@ if __name__ == '__main__':
         pickle.dump(dump, open(data_type, 'w'))
 
     print '# of all answers : ' + str(len(answers))
-    pickle.dump(ans_list, open('answers', 'w'))
+    pickle.dump(answers, open('answers', 'w'))
 
 
 
