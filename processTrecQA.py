@@ -35,11 +35,11 @@ def nlp_process(file_path):
     xml = et.parse(file_path)
     tree = xml.getroot()
     
-    for QApair in tree.findall('.//QApairs'):
-
+    for QApair in tree.findall('QApairs'):
+        
         temp = {}
 
-        if 'positive' not in list(QApair):
+        if QApair.find('positive') is None:
             continue
 
         for value in ['question', 'positive', 'negative']:
@@ -49,8 +49,9 @@ def nlp_process(file_path):
             for document in QApair.findall(value):
 
                 sent = []
+                
+                raw_sent = str(document.text).strip().splitlines()[0]
 
-                raw_sent = document.text.split(u'¥n')[0].replace(u'¥t',' ')
                 parse_result = et.fromstring(lparse(raw_sent))
 
                 tokens = parse_result.findall('.//token')
